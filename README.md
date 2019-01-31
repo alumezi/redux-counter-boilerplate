@@ -1,3 +1,10 @@
+## Redux Counter/Boilerplate
+
+**Can be used as a boilerplate**
+
+Additional features added :
+-Local Storage Persistence
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

@@ -1,28 +1,39 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Increment, Decrement } from "./actionCreators/operations";
+
+import "./App.css";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <h1>{this.props.state.value}</h1>
+        <button onClick={this.props.onIncrement}>+</button>
+        <button onClick={this.props.onDecrement}>-</button>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return { state };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onIncrement: () => {
+      dispatch(Increment());
+    },
+    onDecrement: () => {
+      dispatch(Decrement());
+    }
+  };
+};
+
+const VisibleApp = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
+
+export default VisibleApp;
